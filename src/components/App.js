@@ -1,5 +1,5 @@
 import { Switch, Route } from 'react-router-dom';
-import {Navbar, Home, CreatePost, PostDetail} from './'
+import {Navbar, Home, CreatePost, PostDetail} from './';
 
 function App() {
   return (
@@ -7,9 +7,9 @@ function App() {
       <Navbar/>
       <Switch>
       {/* //first Route as home component */}
-        <Route exact path='/' component={Home}/>   
-        <Route exact path='/post/:postId' component={PostDetail}/>    
-        <Route exact path='/create-post' component={CreatePost}/>    
+        <Route exact path="/" component={Home}/>   
+        <Route exact path="/post/:postId" component={PostDetail}/>    
+        <Route exact path="/create-post" component={CreatePost}/>    
       </Switch>
     </div>
   );

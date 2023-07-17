@@ -1,27 +1,48 @@
+// import { useState } from "react";
+import { firestore } from "../firebase";
+import { useFormInput } from "../hooks";
 
 
 function CreatePost() {
-  return (
+    const title =useFormInput('');         //react hook
+    const SubTitle =useFormInput('');         //react hook
+    const content =useFormInput('');         //react hook
+    
+    function handleSubmit(e){   
+        e.preventDefault();     //helps not to reload agin n again while submittimg or any input
+        console.log('title',title);
+
+        firestore.collection('posts').add({
+            title : title.value,
+            content : content.value, 
+            SubTitle: SubTitle.value,
+            createdAt : new Date()
+        });
+    }
+    
+    
+    return (
     <div className="create-post">
       <h1>CreatePost</h1>
-      <form>
-            
+      <form onSubmit={handleSubmit}>   
             {/* title */}
         <div className="form-field">
             <label>Title</label>
-            <input/>
+            {/* <input value={title} onChange={(e) => setTitle(e.target.value)}/> */}
+            <input {...title}/>
         </div>
         
             {/* for subtitle */}
         <div className="form-field">
             <label>Sub Title</label>
-            <input/>
+            {/* <input value={SubTitle} onChange={(e) => setSubTitle(e.target.value)}/> */}
+            <input {...SubTitle}/>
         </div>
 
             {/* content */}
         <div className="form-field">
             <label>Content</label>
-            <textarea></textarea>
+            <textarea {...content} ></textarea>
         </div>
 
         <button className="create-post-btn">Create Post</button>
