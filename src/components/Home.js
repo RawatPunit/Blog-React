@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { firestore } from "../firebase";
+import styled from 'styled-components';
+
+const BlogHeading = styled.h1`
+  text-align: center;
+  color: #2196f3;
+  margin-bottom: 2px;
+`;
+
+const PostSubtitle =  styled.p`
+  font-size: 13px;
+`;
+
 
 
 function Home() {
@@ -16,12 +28,14 @@ function Home() {
         });
 
         console.log('posts',posts);
+        setPost(posts);
     })
   },[]);
 
   return (
     <div className="home">
-      <h1>Tech Blog</h1>
+      <BlogHeading>Tech Blog</BlogHeading>
+      {/* <button class="createPostBtn">This is a Button</button> */}
       <div id="blog-by">Punit</div>
 
       {posts.map((post,index) =>
@@ -30,7 +44,7 @@ function Home() {
           <h3>{post.title}</h3>
         </Link>
 
-        <p>{post.subTitle}</p>
+        <PostSubtitle>{post.subTitle}</PostSubtitle>
         </div>
       )}
     </div>
@@ -38,3 +52,9 @@ function Home() {
 }
 
 export default Home;
+const styles = {
+  heading:{
+    marginTop  : 30,
+    fontSize : 56
+  },
+}

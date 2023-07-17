@@ -2,6 +2,8 @@
 import { firestore } from "../firebase";
 import { useFormInput } from "../hooks";
 
+import css from './Button.mdule.css';
+
 
 function CreatePost() {
     const title =useFormInput('');         //react hook
@@ -45,7 +47,7 @@ function CreatePost() {
             <textarea {...content} ></textarea>
         </div>
 
-        <button className="create-post-btn">Create Post</button>
+        <button className={css.createPostBtn}>Create Post</button>
       </form>
     </div>
   );
